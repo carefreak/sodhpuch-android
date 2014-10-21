@@ -1,0 +1,79 @@
+<!-- in a real application you should use styles and dimens... -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/header_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:background="#1064b7"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/informations_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_imageview"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="32dp"
+        android:paddingTop="32dp" >
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profile_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor="#FF707070" />
+
+        <TextView
+            android:id="@+id/profile_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#FF909090" />
+
+        <TextView
+            android:id="@+id/profile_deals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#FF909090" />
+
+        <Button
+            android:id="@+id/add_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Add To Contact"
+            android:textColor="#FF909090" />
+
+        <Button
+            android:id="@+id/profile_deals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="View Profile"
+            android:textColor="#FF909090" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_above="@+id/informations_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-16dp"
+        android:background="#ffff"
+        android:src="@drawable/filler_icon" />
+
+</RelativeLayout>

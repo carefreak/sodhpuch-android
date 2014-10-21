@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/rowselector"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingLeft="4dp" >
+
+        <ImageView
+            android:id="@+id/album_icon"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/blank" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tvBusinessName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dip"
+            android:layout_toRightOf="@+id/album_icon"
+            android:textColor="#000"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="20dip"
+            android:layout_below="@id/tvBusinessName"
+            android:layout_marginLeft="4dip"
+            android:layout_toRightOf="@+id/album_icon"
+            android:drawableLeft="@drawable/icon_place"
+            android:gravity="center"
+            android:textColor="#c14117" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="20dip"
+            android:layout_below="@id/tvAddress"
+            android:layout_marginLeft="4dip"
+            android:layout_toRightOf="@+id/album_icon"
+            android:drawableLeft="@drawable/icon_phone"
+            android:gravity="center"
+            android:textColor="#0fad24" >
+        </TextView>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="Profile" >
+    </Button>
+
+</RelativeLayout>

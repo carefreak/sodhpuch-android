@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/rowbackground"
+    android:orientation="vertical" >
+
+    <com.sp.sodhpuch.helpers.CustomAutoCompleteTextView
+        android:id="@+id/etKeyword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:gravity="center"
+        android:hint="@string/htKeyword" />
+
+    <com.sp.sodhpuch.helpers.CustomAutoCompleteTextView
+        android:id="@+id/etLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:gravity="center"
+        android:hint="@string/htLocation" />
+	 <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dip"
+        android:background="#2C9008"
+        android:gravity="center"
+        android:text="@string/track_button_label"
+        android:textColor="#fff" />
+ 	<EditText
+        android:id="@+id/etLocationKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/etQueryType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/etRequestType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:gravity="center" />
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_height="120dip"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dip" >
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_height="120dip"
+            android:layout_margin="5dip"
+            android:layout_weight="1"
+            android:background="#00BFFF"
+            android:gravity="center"
+            android:padding="20dip"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_height="120dip"
+            android:layout_margin="5dip"
+            android:layout_weight="1"
+            android:background="#FFBF00"
+            android:gravity="center"
+            android:padding="20dip"
+            android:textColor="#000000" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="120dip"
+        android:layout_marginTop="5dip" >
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_margin="5dip"
+            android:layout_height="120dip"
+            android:layout_weight="1"
+            android:background="#b335f2"
+            android:gravity="center"
+            android:padding="20dip"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_height="120dip"
+            android:layout_margin="5dip"
+            android:layout_weight="1"
+            android:background="#FA5858"
+            android:gravity="center"
+            android:padding="20dip"
+            android:textColor="#000000" />
+    </TableRow>
+
+</LinearLayout>

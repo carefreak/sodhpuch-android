@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sodhpuch</string>
+    <string name="looking_for_business">Looking for your desired business </string>
+    <string name="no_business">No business data found in this area.</string>
+    <string name="htKeyword"><i>e.g:- Restaurant</i></string>
+    <string name="htLocation"><i>e.g:- New Baneshwor</i></string>
+    <string name="track_button_label">Search</string>
+    <string name="title_activity_business_result">BusinessResult</string>
+    <string name="title_activity_list_result">ListResultActivity</string>
+    <string name="title_activity_ProfileActivity">ProfileActivity</string>
+    <string name="title_activity_Save_contacts">SaveContacts</string>
+    <string name="successfully_saved">Successfully Saved!</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Add Contact Demo</string>
+    <string name="hnt_et_name">Display Name</string>
+    <string name="hnt_et_mobile_phone">Mobile Phone</string>
+    <string name="hnt_et_home_phone">Home Phone</string>
+    <string name="hnt_et_home_email">Home Email</string>
+    <string name="hnt_et_work_email">Work Email</string>
+    <string name="str_btn_add">Add Contact</string>
+    <string name="str_btn_contacts">Contacts List</string>
+
+</resources>
