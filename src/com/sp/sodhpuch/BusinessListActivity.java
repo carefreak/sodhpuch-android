@@ -50,7 +50,7 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 	private BusinessListIconTask imgFetcher;
 	public String acType;
 	public String data;
-	public JSONObject json;
+	public String json;
 	public List<HashMap<String, String>> suggest = new ArrayList<HashMap<String, String>>();
 	public List<HashMap<String, String>> CurrentString = new ArrayList<HashMap<String, String>>();
 	public ArrayAdapter<String> aAdapter;
@@ -186,10 +186,9 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 				newText = URLEncoder.encode(key[0], "UTF-8");
 			} catch (UnsupportedEncodingException e1) {
 				// TODO Auto-generated catch block
-				Log.d("error", "error");
-
 				e1.printStackTrace();
 			}
+
 			try {
 				String url = null;
 				if (acType == "location") {
@@ -203,7 +202,8 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 				json = jParser.getJSONFromUrl(url);
 				Log.d("description", "" + url);
 				suggest.clear();
-				JSONArray jArray = json.getJSONArray("idioms");
+				JSONObject respObj = new JSONObject(json);
+				JSONArray jArray = respObj.getJSONArray("businesses");
 
 				HashMap<String, String> hm = new HashMap<String, String>();
 

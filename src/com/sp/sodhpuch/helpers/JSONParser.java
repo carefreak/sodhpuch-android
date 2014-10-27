@@ -1,43 +1,66 @@
 package com.sp.sodhpuch.helpers;
 
-import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
+import com.sp.sodhpuch.helpers.BusinessListHelper.ApiException;
 
 public class JSONParser {
 
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-
+	String retval = null;
+	private static byte[] buff = new byte[1024];
+	private static final int HTTP_STATUS_OK = 200;
 	// constructor
 	public JSONParser() {
 
 	}
 
-	public JSONObject getJSONFromUrl(String url) {
+	public String getJSONFromUrl(String url)throws ApiException {
 
+		
 		// Making HTTP request
 		try {
 			// defaultHttpClient
-			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpPost httpPost = new HttpPost(url);
+			HttpClient client = new DefaultHttpClient();
+//			HttpGet request = new HttpGet(url);
+			
+//			DefaultHttpClient httpClient = new DefaultHttpClient();
+			HttpPost request = new HttpPost(url);
+			
+			HttpResponse response = client.execute(request);
+			StatusLine status = response.getStatusLine();
+			
+			if (status.getStatusCode() != HTTP_STATUS_OK) {
+				// handle error here
+				throw new ApiException("Invalid response from Sodhpuch" + 
+						status.toString());
+			}			
+			
+			HttpEntity entity = response.getEntity();
+			InputStream ist = entity.getContent();
 
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-			is = httpEntity.getContent();			
+			ByteArrayOutputStream content = new ByteArrayOutputStream();
+
+			int readCount = 0;
+			while ((readCount = ist.read(buff)) != -1) {
+				content.write(buff, 0, readCount);
+			}
+			ist.close();
+			retval = new String (content.toByteArray());
 
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -45,32 +68,11 @@ public class JSONParser {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					is, "iso-8859-1"), 8);
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
-			}
-			is.close();
-			json = sb.toString();
 		} catch (Exception e) {
-			Log.e("Buffer Error", "Error converting result " + e.toString());
+			throw new ApiException("Problem connecting to the server " + 
+					e.getMessage(), e);
 		}
-
-		// try parse the string to a JSON object
-		try {
-			jObj = new JSONObject(json);
-		} catch (JSONException e) {
-			Log.e("JSON Parser", "Error parsing data " + e.toString());
-		}
-
-		// return JSON String
-		return jObj;
-
+		return retval;
 	}
 }
 
