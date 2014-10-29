@@ -28,26 +28,15 @@ public class BusinessListHelper {
 		}
 	}
 
-	/**
-	 * download most popular tracks in given metro.
-	 * 
-	 * @param params
-	 *            search strings
-	 * @return Array of json strings returned by the API.
-	 * @throws ApiException
-	 */
 	public static synchronized String downloadFromServer(String... params)
 			throws ApiException {
-		JSONParser jParser = new JSONParser();
+		JSONHelper jParser = new JSONHelper();
 		String retval = null;
 		String keyword = URLEncoder.encode(params[0]);
 		String location = URLEncoder.encode(params[1]);
 		String id = URLEncoder.encode(params[2]);
 		String url = SodhpuchBusinessListUrl + "&name=" + keyword + "&address="
 				+ location + "&next=" + next;
-		// String url = SodhpuchBusinessListUrl
-		// + "&name=" + keyword+"&address="+location+"&id="+id+"&next="+next;
-
 		retval = jParser.getJSONFromUrl(url);
 		next += 10;
 		return retval;

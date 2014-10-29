@@ -30,7 +30,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.sp.sodhpuch.db.DBController;
-import com.sp.sodhpuch.helpers.JSONParser;
+import com.sp.sodhpuch.helpers.JSONHelper;
 import com.sp.sodhpuch.tasks.BusinessListIconTask;
 
 /**
@@ -179,7 +179,7 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 
 		@Override
 		protected String doInBackground(String... key) {
-			JSONParser jParser = new JSONParser();
+			JSONHelper jParser = new JSONHelper();
 			String newText = key[0];
 			String acType = key[1];
 			try {

@@ -11,12 +11,13 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
+//import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import com.sp.sodhpuch.helpers.BusinessListHelper.ApiException;
 
-public class JSONParser {
+public class JSONHelper {
 
 	static InputStream is = null;
 	static JSONObject jObj = null;
@@ -25,7 +26,7 @@ public class JSONParser {
 	private static byte[] buff = new byte[1024];
 	private static final int HTTP_STATUS_OK = 200;
 	// constructor
-	public JSONParser() {
+	public JSONHelper() {
 
 	}
 

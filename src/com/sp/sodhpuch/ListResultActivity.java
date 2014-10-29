@@ -14,14 +14,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-//public class ListResultActivity extends Activity implements OnScrollListener {
 public class ListResultActivity extends Activity {
 
 	private ArrayList<BusinessListData> businesses;
@@ -39,7 +36,6 @@ public class ListResultActivity extends Activity {
 				this.layoutInflator, this.businesses);
 		this.businesses = null;
 		getData();
-		// businessList.setOnScrollListener(this);
 	}
 
 	@Override
@@ -83,8 +79,7 @@ public class ListResultActivity extends Activity {
 					int visibleItemCount, int totalItemCount) {
 				if (businessList.getLastVisiblePosition() == totalItemCount - 1) {
 					getData();
-					// adapter.notifyDataSetChanged();
-					Log.d("test count", "abc" + totalItemCount);
+//					Log.d("test count", "abc" + totalItemCount);
 				}
 
 			}
@@ -111,25 +106,5 @@ public class ListResultActivity extends Activity {
 			spTask.cancel(true);
 		}
 	}
-
-	// @Override
-	// public void onScrollStateChanged(AbsListView view, int scrollState) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public void onScroll(AbsListView view, int firstVisibleItem,
-	// int visibleItemCount, int totalItemCount) {
-	//
-	// // TODO Auto-generated method stub
-	// if (businessList.getLastVisiblePosition() == totalItemCount-1) {
-	// // Log.d("total",""+totalItemCount);
-	// getData();
-	// adapter.notifyDataSetChanged();
-	//
-	// }
-	//
-	// }
 
 }
