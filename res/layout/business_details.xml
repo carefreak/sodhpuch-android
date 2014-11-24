@@ -38,10 +38,16 @@
 
         <TextView
             android:id="@+id/profile_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="#FF909090" />
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dip"
+            android:layout_toRightOf="@+id/album_icon"
+            android:drawableLeft="@drawable/icon_phone"
+            android:gravity="center"
+            android:clickable="true"
+            android:autoLink="all"
+            android:textColorLink="#0fad24"
+            android:textColor="#0fad24" />
 
         <TextView
             android:id="@+id/profile_deals"

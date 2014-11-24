@@ -61,24 +61,18 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
 		LayoutInflater.from(this);
-
 		this.imgFetcher = new BusinessListIconTask(this);
-
 		this.acvKeyword = (AutoCompleteTextView) findViewById(R.id.etKeyword);
 		this.acvLocation = (AutoCompleteTextView) findViewById(R.id.etLocation);
 		this.etLocationKey = (EditText) this.findViewById(R.id.etLocationKey);
 		this.etQueryType = (EditText) this.findViewById(R.id.etQueryType);
 		this.etRequestType = (EditText) this.findViewById(R.id.etRequestType);
-
 		this.btnSearch = (Button) this.findViewById(R.id.btnSearch);
 		btnSearch.setOnClickListener(this);
-
 		etLocationKey.setVisibility(View.INVISIBLE);
 		etQueryType.setVisibility(View.INVISIBLE);
 		etRequestType.setVisibility(View.INVISIBLE);
-
 		acvLocation.addTextChangedListener(new TextWatcher() {
 
 			public void afterTextChanged(Editable editable) {
@@ -170,7 +164,20 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 	public void alert(String msg) {
 		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 	}
+	
+	
 
+	@Override
+	public void onClick(View v) {
+		if (v.getId() == R.id.btnSearch) {
+			Intent searchIntent = new Intent(BusinessListActivity.this,
+					ListResultActivity.class);
+			searchIntent.putExtra("key", acvKeyword.getText().toString());
+			searchIntent.putExtra("loc", acvLocation.getText().toString());
+			searchIntent.putExtra("qt", etQueryType.getText().toString());
+			startActivity(searchIntent);
+		}
+	}
 	/**
 	 * Save any fetched Business data for orientation changes.
 	 */
@@ -263,16 +270,5 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 
 	}
 
-	@Override
-	public void onClick(View v) {
-		if (v.getId() == R.id.btnSearch) {
-			Intent searchIntent = new Intent(BusinessListActivity.this,
-					ListResultActivity.class);
-			searchIntent.putExtra("key", acvKeyword.getText().toString());
-			searchIntent.putExtra("loc", acvLocation.getText().toString());
-			searchIntent.putExtra("qt", etQueryType.getText().toString());
-			startActivity(searchIntent);
-		}
-	}
 
 }

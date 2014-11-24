@@ -18,6 +18,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.Gravity;
 
 /**
  * AsyncTask for fetching from Sodhpuch API.
@@ -49,6 +50,8 @@ public class BusinessListApiTask extends AsyncTask<String, Integer, String> {
 		progDialog = ProgressDialog.show(this.activity, "Search", this.context
 				.getResources().getString(R.string.looking_for_business), true,
 				false);
+
+		progDialog.getWindow().setGravity(Gravity.BOTTOM);
 	}
 
 	@Override
@@ -91,7 +94,7 @@ public class BusinessListApiTask extends AsyncTask<String, Integer, String> {
 					String id = business.getString("id");
 					String deals_in = business.getString("deals_in");
 					businessData.add(new BusinessListData(businessName,
-							businessAddress, id, phone, deals_in));
+					businessAddress, id, phone, deals_in));
 				}
 
 			} else {
