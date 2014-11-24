@@ -1,8 +1,10 @@
 package com.sp.sodhpuch;
 
 import com.sp.sodhpuch.contacts.SaveContacts;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,13 +18,13 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	public String phone;
 	public String address;
 	public String deals_in;
+	private Object activity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.business_details);
-		// Log.d("abc", "abc");
 		TextView profile_name = (TextView) findViewById(R.id.profile_name);
 		TextView profile_address = (TextView) findViewById(R.id.profile_address);
 		TextView profile_phone = (TextView) findViewById(R.id.profile_phone);
@@ -50,6 +52,11 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			SaveContacts save = new SaveContacts(ProfileActivity.this);
 			save.execute(name, phone);
 //			Log.d("contact", name);
+		}
+		else if(v.getId() == R.id.profile_phone){
+			Intent intent = new Intent(Intent.ACTION_CALL);
+			   intent.setData(Uri.parse("tel:" +phone));
+			   ((Activity) this.activity).startActivity(intent);
 		}
 
 	}

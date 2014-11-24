@@ -78,7 +78,7 @@ public class ListResultActivity extends Activity {
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
 				if (businessList.getLastVisiblePosition() == totalItemCount - 1) {
-					getData();
+					getScrollData();
 //					Log.d("test count", "abc" + totalItemCount);
 				}
 
@@ -95,12 +95,32 @@ public class ListResultActivity extends Activity {
 		String metroTxt = myIntent.getStringExtra("key");
 		String metroLoc = myIntent.getStringExtra("loc");
 		String metroId = myIntent.getStringExtra("qt");
-
+		String first = "first";
+		
 		BusinessListApiTask spTask = new BusinessListApiTask(
 				ListResultActivity.this);
 
 		try {
-			spTask.execute(metroTxt, metroLoc, metroId);
+			spTask.execute(metroTxt, metroLoc, metroId,first);
+
+		} catch (Exception e) {
+			spTask.cancel(true);
+		}
+	}
+	private void getScrollData() {
+		// TODO Auto-generated method stub
+		Intent myIntent = getIntent();
+
+		// gets the arguments from previously created intent
+		String metroTxt = myIntent.getStringExtra("key");
+		String metroLoc = myIntent.getStringExtra("loc");
+		String metroId = myIntent.getStringExtra("qt");
+		String first = "next";
+		BusinessListApiTask spTask = new BusinessListApiTask(
+				ListResultActivity.this);
+
+		try {
+			spTask.execute(metroTxt, metroLoc, metroId,first);
 
 		} catch (Exception e) {
 			spTask.cancel(true);

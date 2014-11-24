@@ -123,8 +123,35 @@ public class BusinessListDataAdapter extends BaseAdapter implements
 		String deals_in = business.getDeals().toString();
 		Log.d("name", deals_in);
 		MyViewHolder holder = (MyViewHolder) v.getTag();
-		if (v instanceof Button) {
+//		if (v instanceof Button) {
+//			
+//			Intent profile = new Intent(activity,
+//					ProfileActivity.class);
+//			profile.putExtra("deals_in", deals_in);
+//			profile.putExtra("phone", holder.business.getPhone());
+//			profile.putExtra("address", holder.business.getAddress());
+//			profile.putExtra("name", holder.business.getName());
+//			this.activity.startActivity(profile);
+//
+//		} else if (v instanceof View) {
+//			Log.d("test","call testing");
+//			Intent intent = new Intent(Intent.ACTION_CALL);
+//			   intent.setData(Uri.parse("tel:" +holder.business.getPhone()));
+//			   this.activity.startActivity(intent);
+//		}
+		Log.d(debugTag, "OnClick pressed.");
+		
+		switch(v.getId())
+		{
+		case R.id.tvPhone:
+		// handle phone number click;
+			Intent intent = new Intent(Intent.ACTION_CALL);
+			   intent.setData(Uri.parse("tel:" +holder.business.getPhone()));
+			   this.activity.startActivity(intent);
 			
+		break;
+		case R.id.btnProfile:
+		// handle profile button click;
 			Intent profile = new Intent(activity,
 					ProfileActivity.class);
 			profile.putExtra("deals_in", deals_in);
@@ -132,15 +159,10 @@ public class BusinessListDataAdapter extends BaseAdapter implements
 			profile.putExtra("address", holder.business.getAddress());
 			profile.putExtra("name", holder.business.getName());
 			this.activity.startActivity(profile);
-
-		} else if (v instanceof View) {
-			Log.d("test","call testing");
-			Intent intent = new Intent(Intent.ACTION_CALL);
-			   intent.setData(Uri.parse("tel:" +holder.business.getPhone()));
-			   this.activity.startActivity(intent);
+		break;
+		default:
+		Log.d("","ss");
 		}
-		Log.d(debugTag, "OnClick pressed.");
-
 	}
 
 }
