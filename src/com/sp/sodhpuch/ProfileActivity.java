@@ -24,7 +24,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.business_details);
+		setContentView(R.layout.business_profile);
 		TextView profile_name = (TextView) findViewById(R.id.profile_name);
 		TextView profile_address = (TextView) findViewById(R.id.profile_address);
 		TextView profile_phone = (TextView) findViewById(R.id.profile_phone);
