@@ -7,11 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.brickred.socialauth.Profile;
+import org.brickred.socialauth.android.DialogListener;
+import org.brickred.socialauth.android.SocialAuthAdapter;
+import org.brickred.socialauth.android.SocialAuthError;
+import org.brickred.socialauth.android.SocialAuthAdapter.Provider;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +26,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -33,7 +40,8 @@ import android.widget.Toast;
 
 import com.sp.sodhpuch.db.DBController;
 import com.sp.sodhpuch.helpers.JSONHelper;
-import com.sp.sodhpuch.tasks.BusinessListIconTask;
+
+//import com.sp.sodhpuch.tasks.BusinessListIconTask;
 
 /**
  * Find/display given business in given area.
@@ -49,38 +57,51 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 	private EditText etLocationKey;
 	private EditText etQueryType;
 	private EditText etRequestType;
-	private BusinessListIconTask imgFetcher;
+	// private BusinessListIconTask imgFetcher;
 	public String acType;
 	public String data;
 	public String json;
 	public List<HashMap<String, String>> suggest = new ArrayList<HashMap<String, String>>();
 	public List<HashMap<String, String>> CurrentString = new ArrayList<HashMap<String, String>>();
 	public ArrayAdapter<String> aAdapter;
-
+	SocialAuthAdapter adapter;
 	DBController controller = new DBController(this);
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
 		LayoutInflater.from(this);
 
-		this.imgFetcher = new BusinessListIconTask(this);
+		/* Social Auth actions */
+
+//		Button facebook_button = (Button) findViewById(R.id.fb_btn);
+//		facebook_button.setBackgroundResource(R.drawable.facebook);
+//		adapter = new SocialAuthAdapter(new ResponseListener());
+//
+//		// Add providers
+//		adapter.addProvider(Provider.LINKEDIN, R.drawable.facebook);
+//		adapter.addProvider(Provider.FACEBOOK, R.drawable.facebook);
+//		adapter.addProvider(Provider.TWITTER, R.drawable.facebook);
+//		adapter.enable(facebook_button);
+
+		/* Initialize search fields */
+
+		// this.imgFetcher = new BusinessListIconTask(this);
 
 		this.acvKeyword = (AutoCompleteTextView) findViewById(R.id.etKeyword);
 		this.acvLocation = (AutoCompleteTextView) findViewById(R.id.etLocation);
 		this.etLocationKey = (EditText) this.findViewById(R.id.etLocationKey);
 		this.etQueryType = (EditText) this.findViewById(R.id.etQueryType);
 		this.etRequestType = (EditText) this.findViewById(R.id.etRequestType);
-
 		this.btnSearch = (Button) this.findViewById(R.id.btnSearch);
+		/* fire search query */
 		btnSearch.setOnClickListener(this);
-
+		/* Visibility of fields */
 		etLocationKey.setVisibility(View.INVISIBLE);
 		etQueryType.setVisibility(View.INVISIBLE);
 		etRequestType.setVisibility(View.INVISIBLE);
-
+		/* Auto COmplete Actions */
 		acvLocation.addTextChangedListener(new TextWatcher() {
 
 			public void afterTextChanged(Editable editable) {
@@ -98,7 +119,7 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 				String newText = s.toString();
 				acType = "location";
 				if (s.length() >= 2) {
-					new getSuggestion().execute(newText, acType);
+					new GetSuggestion().execute(newText, acType);
 
 				}
 
@@ -138,7 +159,7 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 				String newText = s.toString();
 				acType = "key";
 				if (s.length() >= 2) {
-					new getSuggestion().execute(newText, acType);
+					new GetSuggestion().execute(newText, acType);
 
 				}
 
@@ -163,21 +184,92 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 
 	}
 
-	/**
-	 * Handy dandy alerter.
-	 * 
-	 * @param msg
-	 *            the message to toast.
-	 */
-	public void alert(String msg) {
-		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+	@Override
+	public void onClick(View v) {
+		if (v.getId() == R.id.btnSearch) {
+			Intent searchIntent = new Intent(BusinessListActivity.this,
+					ListResultActivity.class);
+			searchIntent.putExtra("key", acvKeyword.getText().toString());
+			searchIntent.putExtra("loc", acvLocation.getText().toString());
+			searchIntent.putExtra("qt", etQueryType.getText().toString());
+			startActivity(searchIntent);
+		}
 	}
 
-	/**
-	 * Save any fetched Business data for orientation changes.
-	 */
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.action_bar, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 
-	class getSuggestion extends AsyncTask<String, String, String> {
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+		case R.id.action_refresh:
+			// refresh
+			return true;
+		case R.id.action_help:
+			// help action
+			return true;
+		case R.id.action_check_updates:
+			// check for updates action
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	private final class ResponseListener implements DialogListener {
+		private Profile abc;
+
+		public void onComplete(Bundle values) {
+
+			// Variable to receive message status
+			boolean status;
+			String provider = values.getString(SocialAuthAdapter.PROVIDER);
+			Log.d("ShareButton", "Authentication Successful" + provider);
+
+			// Get name of provider after authentication
+
+			try {
+				// Please avoid sending duplicate message. Social Media
+				// Providers block duplicate messages.
+				abc = adapter.getCurrentProvider().getUserProfile();
+				status = true;
+			} catch (Exception e) {
+				status = false;
+				Log.d("", "" + e);
+			}
+			if (status) {
+				Intent intent = new Intent(BusinessListActivity.this,
+						Profile_Activity.class);
+				intent.putExtra("provider", provider);
+				intent.putExtra("profile", abc);
+				startActivity(intent);
+			} else {
+				Log.d("haai", "aalu khau" + status);
+			}
+
+			// Post Toast or Dialog to display on screen
+		}
+
+		public void onError(SocialAuthError error) {
+			Log.d("ShareButton", "Authentication Error");
+		}
+
+		public void onCancel() {
+			Log.d("ShareButton", "Authentication Cancelled");
+		}
+
+		@Override
+		public void onBack() {
+			// TODO Auto-generated method stub
+
+		}
+
+	}
+
+	class GetSuggestion extends AsyncTask<String, String, String> {
 
 		@Override
 		protected String doInBackground(String... key) {
@@ -265,23 +357,13 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 
 	}
 
-	@Override
-	public void onClick(View v) {
-		if (v.getId() == R.id.btnSearch) {
-			Intent searchIntent = new Intent(BusinessListActivity.this,
-					ListResultActivity.class);
-			searchIntent.putExtra("key", acvKeyword.getText().toString());
-			searchIntent.putExtra("loc", acvLocation.getText().toString());
-			searchIntent.putExtra("qt", etQueryType.getText().toString());
-			startActivity(searchIntent);
-		}
-	}
-
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.action_bar, menu);
-
-		return super.onCreateOptionsMenu(menu);
-	}
-
+	// /**
+	// * Handy dandy alerter.
+	// *
+	// * @param msg
+	// * the message to toast.
+	// */
+	// public void alert(String msg) {
+	// Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+	// }
 }

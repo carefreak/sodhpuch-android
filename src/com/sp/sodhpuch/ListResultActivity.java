@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
@@ -79,7 +81,7 @@ public class ListResultActivity extends Activity {
 					int visibleItemCount, int totalItemCount) {
 				if (businessList.getLastVisiblePosition() == totalItemCount - 1) {
 					getScrollData();
-//					Log.d("test count", "abc" + totalItemCount);
+					// Log.d("test count", "abc" + totalItemCount);
 				}
 
 			}
@@ -96,17 +98,18 @@ public class ListResultActivity extends Activity {
 		String metroLoc = myIntent.getStringExtra("loc");
 		String metroId = myIntent.getStringExtra("qt");
 		String first = "first";
-		
+
 		BusinessListApiTask spTask = new BusinessListApiTask(
 				ListResultActivity.this);
 
 		try {
-			spTask.execute(metroTxt, metroLoc, metroId,first);
+			spTask.execute(metroTxt, metroLoc, metroId, first);
 
 		} catch (Exception e) {
 			spTask.cancel(true);
 		}
 	}
+
 	private void getScrollData() {
 		// TODO Auto-generated method stub
 		Intent myIntent = getIntent();
@@ -120,11 +123,17 @@ public class ListResultActivity extends Activity {
 				ListResultActivity.this);
 
 		try {
-			spTask.execute(metroTxt, metroLoc, metroId,first);
+			spTask.execute(metroTxt, metroLoc, metroId, first);
 
 		} catch (Exception e) {
 			spTask.cancel(true);
 		}
 	}
 
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.action_bar, menu);
+
+		return super.onCreateOptionsMenu(menu);
+	}
 }

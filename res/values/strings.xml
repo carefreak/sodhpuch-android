@@ -10,6 +10,7 @@
     <string name="title_activity_business_result">BusinessResult</string>
     <string name="title_activity_list_result">ListResultActivity</string>
     <string name="title_activity_ProfileActivity">ProfileActivity</string>
+    <string name="title_activity_Profile_Activity">Profile_Activity</string>    
     <string name="title_activity_Save_contacts">SaveContacts</string>
     <string name="successfully_saved">Successfully Saved!</string>
     <string name="hello_world">Hello world!</string>
@@ -30,7 +31,7 @@
     <string name="action_refresh">Refresh</string>
     <string name="action_check_updates">Check update</string>
     <string name="action_search">Search</string>
-    <string name="action_location_found">Location</string>
+    <string name="fb_text">Facebook</string><string name="action_location_found">Location</string> 
     
 
 </resources>
