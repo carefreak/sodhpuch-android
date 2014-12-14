@@ -16,8 +16,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -268,11 +271,24 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 		}
 
 	}
+	
+	public boolean isNetworkAvailable() {
+	    ConnectivityManager connectivityManager 
+	          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+	}
 
 	class GetSuggestion extends AsyncTask<String, String, String> {
-
+		
 		@Override
+
 		protected String doInBackground(String... key) {
+			if(isNetworkAvailable()){
+//				Log.d("Checked", "network checked");
+//			}else{
+//				Log.d("Checked", "network not checked");
+
 			JSONHelper jParser = new JSONHelper();
 			String newText = key[0];
 			String acType = key[1];
@@ -351,7 +367,7 @@ public class BusinessListActivity extends Activity implements OnClickListener {
 					}
 				});
 			}
-
+			}
 			return null;
 		}
 

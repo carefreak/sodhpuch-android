@@ -5,64 +5,81 @@
     android:background="@drawable/spbg1"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/imgLogo"
         android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/scrollView1"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:src="@drawable/splogo" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical" >
 
-        <com.sp.sodhpuch.helpers.CustomAutoCompleteTextView
-            android:id="@+id/etKeyword"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_margin="5dip"
-            android:gravity="center"
-            android:background="@drawable/rounded_corner_tf"
-            android:hint="@string/htKeyword" />
-
-        <com.sp.sodhpuch.helpers.CustomAutoCompleteTextView
-            android:id="@+id/etLocation"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/etKeyword"
-            android:layout_margin="5dip"
-            android:gravity="center"
-            android:background="@drawable/rounded_corner_tf"
-            android:hint="@string/htLocation" />
-
-        <Button
-            android:id="@+id/btnSearch"
-            android:layout_below="@+id/etLocation"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="5dip"
-            android:background="@drawable/btn_selector"            
-            android:text="@string/track_button_label"
-            android:textColor="#fff" />
-
-        <EditText
-            android:id="@+id/etLocationKey"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:gravity="center" />
+            android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/etQueryType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:gravity="center" />
+            <com.sp.sodhpuch.helpers.CustomAutoCompleteTextView
+                android:id="@+id/etKeyword"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_margin="5dip"
+                android:background="@drawable/rounded_corner_tf"
+                android:gravity="center"
+                android:hint="@string/htKeyword" />
 
-        <EditText
-            android:id="@+id/etRequestType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:gravity="center" />
-    </RelativeLayout>
+            <com.sp.sodhpuch.helpers.CustomAutoCompleteTextView
+                android:id="@+id/etLocation"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etKeyword"
+                android:layout_margin="5dip"
+                android:background="@drawable/rounded_corner_tf"
+                android:gravity="center"
+                android:hint="@string/htLocation" />
 
-<!--  <TableRow
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etLocation"
+                android:layout_margin="5dip"
+                android:background="@drawable/btn_selector"
+                android:text="@string/track_button_label"
+                android:textColor="#fff" />
+
+            <EditText
+                android:id="@+id/etLocationKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/etQueryType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/etRequestType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:gravity="center" />
+        </RelativeLayout>
+    </ScrollView>
+    <!--
+    <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="120dip"
@@ -93,6 +110,7 @@
             android:background="#067AAC"
             android:padding="20dip"
             android:textColor="#fff" />
-    </TableRow> -->
+    </TableRow>
+    -->
 
 </RelativeLayout>
