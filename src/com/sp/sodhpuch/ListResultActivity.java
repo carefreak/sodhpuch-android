@@ -17,27 +17,29 @@ import android.view.MenuInflater;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class ListResultActivity extends Activity {
 
-	private ArrayList<BusinessListData> businesses;
-	private ListView businessList;
-	private LayoutInflater layoutInflator;
-	private BusinessListIconTask imgFetcher;
-	BusinessListDataAdapter adapter;
+	private ArrayList<BusinessListData> businesses; // BusinessListData object
+	private ListView businessList; // ListView object
+	private LayoutInflater layoutInflator; // Inflater Object
+	private BusinessListIconTask imgFetcher; // Profile icon fetcher task object
+	BusinessListDataAdapter adapter; // BusinessListDataAdapter object
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.businesslist);
-		this.businessList = (ListView) findViewById(R.id.lvBusinesslist);
+		setContentView(R.layout.businesslist); // ListView to hold business list
+												// data
+		this.businessList = (ListView) findViewById(R.id.lvBusinesslist); // Initialize View Containing FieldsofListView
 		this.adapter = new BusinessListDataAdapter(this, this.imgFetcher,
-				this.layoutInflator, this.businesses);
+				this.layoutInflator, this.businesses); // initialize BusinessListDataAdapter
 		this.businesses = null;
-		getData();
+		getBusinesses(); // Get Businesses List from server
 	}
 
 	@Override
@@ -52,13 +54,16 @@ public class ListResultActivity extends Activity {
 	 * Bundle to hold refs to row items views.
 	 * 
 	 */
-	public static class MyViewHolder {
+
+	/* view holder class to hold data from businessListDataAdapter */
+	public static class BusinessListViewHolder {
 		public TextView businessName, businessAddress, phoneNo;
-		public Button btnProfile;
+		public ImageButton btnProfile;
 		public ImageView icon;
 		public BusinessListData business;
 	}
 
+	/* Set BusinessListData fetched from server to businessListDataAdapter */
 	public void setBusinesses(ArrayList<BusinessListData> businesses) {
 		imgFetcher = new BusinessListIconTask(this);
 		layoutInflator = LayoutInflater.from(this);
@@ -89,7 +94,8 @@ public class ListResultActivity extends Activity {
 
 	}
 
-	private void getData() {
+	/* Get Businesses data from server */
+	private void getBusinesses() {
 		// TODO Auto-generated method stub
 		Intent myIntent = getIntent();
 
@@ -110,6 +116,7 @@ public class ListResultActivity extends Activity {
 		}
 	}
 
+	/* Fetch more data on scroll */
 	private void getScrollData() {
 		// TODO Auto-generated method stub
 		Intent myIntent = getIntent();

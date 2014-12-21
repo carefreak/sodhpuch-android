@@ -3,9 +3,10 @@
     android:id="@+id/background"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/transparent"
-	android:cacheColorHint="@android:color/transparent"
-    android:orientation="horizontal" >
+    android:background="@drawable/list_background"
+    android:cacheColorHint="@android:color/transparent"
+    android:orientation="horizontal"
+    android:paddingBottom="4dp" >
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -29,45 +30,58 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dip"
             android:layout_toRightOf="@+id/album_icon"
-            android:textColor="#000"
+            android:textColor="#F9690E"
             android:textStyle="bold" >
-        </TextView>
-
-        <TextView
-            android:id="@+id/tvAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="20dip"
-            android:layout_below="@id/tvBusinessName"
-            android:layout_marginLeft="4dip"
-            android:layout_toRightOf="@+id/album_icon"
-            android:drawableLeft="@drawable/icon_place"
-            android:gravity="center"
-            android:textColor="#c14117" >
         </TextView>
 
         <TextView
             android:id="@+id/tvPhone"
             android:layout_width="wrap_content"
             android:layout_height="20dip"
-            android:layout_below="@id/tvAddress"
+            android:layout_below="@id/tvBusinessName"
             android:layout_marginLeft="4dip"
             android:layout_toRightOf="@+id/album_icon"
+            android:autoLink="all"
+            android:clickable="true"
             android:drawableLeft="@drawable/icon_phone"
             android:gravity="center"
-            android:clickable="true"
+            android:textColor="@android:color/darker_gray" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="20dip"
+            android:layout_marginLeft="4dip"
+            android:layout_toRightOf="@id/tvPhone"
+            android:layout_below="@id/tvBusinessName"
             android:autoLink="all"
-            android:textColorLink="#0fad24" 
-            android:textColor="#0fad24" >
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_action_phone"
+            android:gravity="center"
+            android:textColor="@android:color/darker_gray" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="20dip"
+            android:layout_below="@id/tvPhone"
+            android:layout_marginLeft="4dip"
+            android:layout_toRightOf="@+id/album_icon"
+            android:drawableLeft="@drawable/icon_place"
+            android:gravity="center"
+            android:textColor="#c14117" >
         </TextView>
     </RelativeLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/btnProfile"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="Profile" >
-    </Button>
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_action_next_item" />
 
 </RelativeLayout>
