@@ -66,13 +66,6 @@ public class MainActivity extends Activity {
 		for (int i = 0; i < navMenuTitles.length; i++) { 
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[i], navMenuIcons.getResourceId(i, -1)));	
 		}
-//		// Find People
-//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-//		// Photos
-//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-//		// Communities, Will add a counter here
-//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
-		// Pages
 		navMenuIcons.recycle();
 
 		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
