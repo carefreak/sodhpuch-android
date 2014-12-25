@@ -43,7 +43,7 @@
             android:layout_marginLeft="4dip"
 			
     		android:linksClickable="true"
-            android:drawableLeft="@drawable/icon_phone"
+            android:drawableLeft="@drawable/ic_ctx_phone"
             android:gravity="center"
             android:textColor="#0fad24"
             android:textColorLink="#0fad24" />

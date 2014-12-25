@@ -6,7 +6,6 @@ import com.sp.sodhpuch.adapters.NavDrawerListAdapter;
 import com.sp.sodhpuch.data.NavDrawerItem;
 import com.sp.sodhpuch.fragments.FragmentButton;
 import com.sp.sodhpuch.fragments.FragmentImageView;
-import com.sp.sodhpuch.fragments.FragmentListView;
 import com.sp.sodhpuch.fragments.FragmentMain;
 
 import android.app.Activity;

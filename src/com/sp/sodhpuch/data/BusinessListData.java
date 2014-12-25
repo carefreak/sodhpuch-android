@@ -4,7 +4,7 @@ public class BusinessListData {
 	
 	private String businessName;
 	private String businessAddress;
-	private String imageUrl;
+//	private String imageUrl;
 	private String artistUrl;
 	private String businessUrl;
 	private String phone;

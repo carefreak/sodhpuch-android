@@ -22,7 +22,7 @@ import android.widget.EditText;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.sp.sodhpuch.ListResultActivity;
+import com.sp.sodhpuch.BusinessResultListActivity;
 import com.sp.sodhpuch.R;
 import com.sp.sodhpuch.tasks.BusinessInfoSuggestionTask;
 
@@ -44,7 +44,7 @@ public class FragmentMain extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.main, null);
+		View view = inflater.inflate(R.layout.fragment_home, null);
 		this.acvKeyword = (AutoCompleteTextView) view
 				.findViewById(R.id.etKeyword);
 		this.acvLocation = (AutoCompleteTextView) view
@@ -170,7 +170,7 @@ public class FragmentMain extends Fragment implements OnClickListener {
 		if (v.getId() == R.id.btnSearch) {
 
 			Intent searchIntent = new Intent(getActivity(),
-					ListResultActivity.class);
+					BusinessResultListActivity.class);
 			searchIntent.putExtra("key", acvKeyword.getText().toString());
 			searchIntent.putExtra("loc", acvLocation.getText().toString());
 			searchIntent.putExtra("qt", etQueryType.getText().toString());

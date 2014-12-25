@@ -3,9 +3,9 @@ package com.sp.sodhpuch.adapters;
 import java.util.ArrayList;
 
 //import com.sp.sodhpuch.BusinessListActivity.MyViewHolder;
-import com.sp.sodhpuch.ListResultActivity;
-import com.sp.sodhpuch.ListResultActivity.BusinessListViewHolder;
-import com.sp.sodhpuch.ProfileActivity;
+import com.sp.sodhpuch.BusinessResultListActivity;
+import com.sp.sodhpuch.BusinessResultListActivity.BusinessListViewHolder;
+import com.sp.sodhpuch.BusinessProfileActivity;
 import com.sp.sodhpuch.R;
 import com.sp.sodhpuch.data.BusinessListData;
 import com.sp.sodhpuch.tasks.BusinessListIconTask;
@@ -32,13 +32,13 @@ public class BusinessListDataAdapter extends BaseAdapter implements
 		OnClickListener {
 
 	private static final String debugTag = "BusinessListDataAdapter";
-	private ListResultActivity activity;
+	private BusinessResultListActivity activity;
 	private BusinessListIconTask imgFetcher;
 	private LayoutInflater layoutInflater;
 	private ArrayList<BusinessListData> businesses;
 	BusinessListData business;
 	
-	public BusinessListDataAdapter(ListResultActivity a,
+	public BusinessListDataAdapter(BusinessResultListActivity a,
 			BusinessListIconTask i, LayoutInflater l,
 			ArrayList<BusinessListData> data) {
 		this.activity = a;
@@ -78,7 +78,7 @@ public class BusinessListDataAdapter extends BaseAdapter implements
 	public View getView(int pos, View convertView, ViewGroup parent) {
 		BusinessListViewHolder holder;
 		if (convertView == null) {
-			convertView = layoutInflater.inflate(R.layout.trackrow, parent,
+			convertView = layoutInflater.inflate(R.layout.list_item_businesses, parent,
 					false);
 			holder = new BusinessListViewHolder();
 			holder.businessName = (TextView) convertView
@@ -122,22 +122,6 @@ public class BusinessListDataAdapter extends BaseAdapter implements
 		String deals_in = business.getDeals().toString();
 		Log.d("name", deals_in);
 		BusinessListViewHolder holder = (BusinessListViewHolder) v.getTag();
-//		if (v instanceof Button) {
-//			
-//			Intent profile = new Intent(activity,
-//					ProfileActivity.class);
-//			profile.putExtra("deals_in", deals_in);
-//			profile.putExtra("phone", holder.business.getPhone());
-//			profile.putExtra("address", holder.business.getAddress());
-//			profile.putExtra("name", holder.business.getName());
-//			this.activity.startActivity(profile);
-//
-//		} else if (v instanceof View) {
-//			Log.d("test","call testing");
-//			Intent intent = new Intent(Intent.ACTION_CALL);
-//			   intent.setData(Uri.parse("tel:" +holder.business.getPhone()));
-//			   this.activity.startActivity(intent);
-//		}
 		Log.d(debugTag, "OnClick pressed.");
 		
 		switch(v.getId())
@@ -152,7 +136,7 @@ public class BusinessListDataAdapter extends BaseAdapter implements
 		case R.id.btnProfile:
 		// handle profile button click;
 			Intent profile = new Intent(activity,
-					ProfileActivity.class);
+					BusinessProfileActivity.class);
 			profile.putExtra("deals_in", deals_in);
 			profile.putExtra("phone", holder.business.getPhone());
 			profile.putExtra("address", holder.business.getAddress());

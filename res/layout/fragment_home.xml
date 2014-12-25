@@ -32,7 +32,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
                 android:layout_margin="5dip"
-                android:background="@drawable/rounded_corner_tf"
+                android:background="@drawable/et_search_roundedcorner"
                 android:gravity="center"
                 android:hint="@string/htKeyword" />
 
@@ -42,7 +42,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/etKeyword"
                 android:layout_margin="5dip"
-                android:background="@drawable/rounded_corner_tf"
+                android:background="@drawable/et_search_roundedcorner"
                 android:gravity="center"
                 android:hint="@string/htLocation" />
 
@@ -52,7 +52,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/etLocation"
                 android:layout_margin="5dip"
-                android:background="@drawable/btn_selector"
+                android:background="@drawable/btn_search_selector"
                 android:text="@string/track_button_label"
                 android:textColor="#fff" />
 

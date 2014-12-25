@@ -1,8 +1,8 @@
-package com.sp.sodhpuch.contacts;
+package com.sp.sodhpuch.tasks;
 
 import java.util.ArrayList;
 
-import com.sp.sodhpuch.ProfileActivity;
+import com.sp.sodhpuch.BusinessProfileActivity;
 import android.content.*;
 import android.os.AsyncTask;
 import android.os.RemoteException;
@@ -14,16 +14,15 @@ import android.provider.ContactsContract.RawContacts;
 import android.util.Log;
 import android.widget.Toast;
 
-public class SaveContacts extends AsyncTask<String, Integer, String> {
-	private ProfileActivity activity;
-	private Context context;
+public class ContactHelperTask extends AsyncTask<String, Integer, String> {
+	private BusinessProfileActivity activity;
 	String result = null;
 
-	public SaveContacts(ProfileActivity activity) {
+	public ContactHelperTask(BusinessProfileActivity activity) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.activity = activity;
-		this.context = this.activity.getApplicationContext();
+		this.activity.getApplicationContext();
 	}
 
 	@Override

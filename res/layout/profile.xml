@@ -36,7 +36,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:padding="7dp"
-    android:background="@drawable/blue_gradient"
+    android:background="#54FEFE"
     >   
 	    <ImageView 
 			android:id="@+id/imgView"
@@ -49,7 +49,6 @@
 			android:layout_width="wrap_content"
 			android:layout_gravity="center_vertical"
 			android:textColor="#ffffff"
-			android:text="Profile"
 			android:textSize="14sp"
 			android:layout_marginLeft="5dp"
 			android:textStyle="bold"
@@ -63,7 +62,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_gradient"
+    android:background="#EFEEEE"
     android:layout_margin="10dp"
     >         
 	    <TextView 

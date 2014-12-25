@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="8dp"
-        android:background="@drawable/counter_bg"
+        android:background="#CCC"
         android:gravity="center_vertical"
         android:textColor="@color/counter_text_color" />
 

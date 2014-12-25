@@ -1,6 +1,6 @@
 package com.sp.sodhpuch;
 
-import com.sp.sodhpuch.contacts.SaveContacts;
+import com.sp.sodhpuch.tasks.ContactHelperTask;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,23 +11,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ProfileActivity extends Activity implements OnClickListener {
+public class BusinessProfileActivity extends Activity implements OnClickListener {
 	// public TextView profile_name;
 	public Button btnAddContacts;
 	public String name;
 	public String phone;
 	public String address;
 	public String deals_in;
-	private Object activity;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.business_profile);
+		setContentView(R.layout.activity_business_profile);
 		TextView profile_name = (TextView) findViewById(R.id.profile_name);
 		TextView profile_address = (TextView) findViewById(R.id.profile_address);
 		TextView profile_phone = (TextView) findViewById(R.id.profile_phone);
@@ -65,7 +62,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		if (v.getId() == R.id.add_contacts) {
-			SaveContacts save = new SaveContacts(ProfileActivity.this);
+			ContactHelperTask save = new ContactHelperTask(BusinessProfileActivity.this);
 			save.execute(name, phone);
 			// Log.d("contact", name);
 		}

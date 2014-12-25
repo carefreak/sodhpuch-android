@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sp.sodhpuch.ListResultActivity"
+            android:name="com.sp.sodhpuch.BusinessResultListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.ListResultActivity" />
@@ -32,7 +32,7 @@
             android:label="@string/title_activity_business_result" >
         </activity>
         <activity
-            android:name="com.sp.sodhpuch.ProfileActivity"
+            android:name="com.sp.sodhpuch.BusinessProfileActivity"
             android:label="@string/title_activity_ProfileActivity" >
         </activity>
                 <activity
@@ -42,7 +42,6 @@
     </application>
 
     <uses-sdk android:minSdkVersion="7" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />

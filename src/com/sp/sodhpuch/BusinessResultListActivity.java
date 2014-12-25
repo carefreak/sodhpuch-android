@@ -1,9 +1,6 @@
 package com.sp.sodhpuch;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import com.sp.sodhpuch.adapters.BusinessListDataAdapter;
 import com.sp.sodhpuch.data.BusinessListData;
 import com.sp.sodhpuch.tasks.BusinessListApiTask;
@@ -12,19 +9,17 @@ import com.sp.sodhpuch.tasks.BusinessListIconTask;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ListResultActivity extends Activity {
+public class BusinessResultListActivity extends Activity {
 
 	private ArrayList<BusinessListData> businesses; // BusinessListData object
 	private ListView businessList; // ListView object
@@ -35,7 +30,7 @@ public class ListResultActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.businesslist); // ListView to hold business list
+		setContentView(R.layout.activity_business_result_list); // ListView to hold business list
 												// data
 		this.businessList = (ListView) findViewById(R.id.lvBusinesslist); // Initialize View Containing FieldsofListView
 		this.adapter = new BusinessListDataAdapter(this, this.imgFetcher,
@@ -108,7 +103,7 @@ public class ListResultActivity extends Activity {
 		String first = "first";
 
 		BusinessListApiTask spTask = new BusinessListApiTask(
-				ListResultActivity.this);
+				BusinessResultListActivity.this);
 
 		try {
 			spTask.execute(metroTxt, metroLoc, metroId, first);
@@ -129,7 +124,7 @@ public class ListResultActivity extends Activity {
 		String metroId = myIntent.getStringExtra("qt");
 		String first = "next";
 		BusinessListApiTask spTask = new BusinessListApiTask(
-				ListResultActivity.this);
+				BusinessResultListActivity.this);
 
 		try {
 			spTask.execute(metroTxt, metroLoc, metroId, first);

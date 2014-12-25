@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import com.sp.sodhpuch.db.DBController;
 import com.sp.sodhpuch.db.UpdateSqliteDB;
-import com.sp.sodhpuch.ListResultActivity;
+import com.sp.sodhpuch.BusinessResultListActivity;
 import com.sp.sodhpuch.R;
 import com.sp.sodhpuch.data.BusinessListData;
 import com.sp.sodhpuch.helpers.BusinessListHelper;
@@ -28,7 +28,7 @@ import android.view.Gravity;
 public class BusinessListApiTask extends AsyncTask<String, Integer, String> {
 	private ProgressDialog progDialog;
 	private Context context;
-	private ListResultActivity activity;
+	private BusinessResultListActivity activity;
 	HashMap<String, String> queryValues;
 
 	/**
@@ -37,7 +37,7 @@ public class BusinessListApiTask extends AsyncTask<String, Integer, String> {
 	 * @param activity
 	 */
 
-	public BusinessListApiTask(ListResultActivity activity) {
+	public BusinessListApiTask(BusinessResultListActivity activity) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.activity = activity;

@@ -22,7 +22,7 @@ public class FragmentListView extends Fragment {
         View view = inflater.inflate(R.layout.fragment_listview, null);
     
         String[] listViewItems = new String[] {"Android", "iOS", "Windows Phone", "Blackberry", "Meego", "Symbian"};
-        listView = (ListView) view.findViewById(R.id.fragment_listview_listview);
+        listView = (ListView) view.findViewById(R.id.fragment_listview);
         listView.setAdapter(new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, listViewItems));
         

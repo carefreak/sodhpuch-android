@@ -16,6 +16,7 @@ public class CustomAutoCompleteTextView extends AutoCompleteTextView {
 	}
 
 	/** Returns the country name corresponding to the selected item */
+	@SuppressWarnings("unchecked")
 	@Override
 	protected CharSequence convertSelectionToString(Object selectedItem) {
 		/** Each item in the autocompetetextview suggestion list is a hashmap object */
