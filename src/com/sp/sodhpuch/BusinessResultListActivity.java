@@ -1,6 +1,7 @@
 package com.sp.sodhpuch;
 
 import java.util.ArrayList;
+
 import com.sp.sodhpuch.adapters.BusinessListDataAdapter;
 import com.sp.sodhpuch.data.BusinessListData;
 import com.sp.sodhpuch.tasks.BusinessListApiTask;
@@ -9,9 +10,11 @@ import com.sp.sodhpuch.tasks.BusinessListIconTask;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ImageButton;
@@ -37,6 +40,7 @@ public class BusinessResultListActivity extends Activity {
 				this.layoutInflator, this.businesses); // initialize BusinessListDataAdapter
 		this.businesses = null;
 		getBusinesses(); // Get Businesses List from server
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
@@ -46,6 +50,17 @@ public class BusinessResultListActivity extends Activity {
 		myStuff[1] = this.imgFetcher;
 		return myStuff;
 	}
+	
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 
 	/**
 	 * Bundle to hold refs to row items views.

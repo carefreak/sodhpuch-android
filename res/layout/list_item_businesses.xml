@@ -3,7 +3,7 @@
     android:id="@+id/background"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/lv_searchlist_normal"
+    android:background="@drawable/list_item_businesslist_bg_normal"
     android:cacheColorHint="@android:color/transparent"
     android:orientation="horizontal"
     android:paddingBottom="4dp" >

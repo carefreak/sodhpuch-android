@@ -17,9 +17,11 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -47,7 +49,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
-
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
@@ -62,8 +63,9 @@ public class MainActivity extends Activity {
 
 		// adding nav drawer items to array
 		// Home
-		for (int i = 0; i < navMenuTitles.length; i++) { 
-			navDrawerItems.add(new NavDrawerItem(navMenuTitles[i], navMenuIcons.getResourceId(i, -1)));	
+		for (int i = 0; i < navMenuTitles.length; i++) {
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[i], navMenuIcons
+					.getResourceId(i, -1)));
 		}
 		navMenuIcons.recycle();
 
@@ -79,13 +81,15 @@ public class MainActivity extends Activity {
 		getActionBar().setHomeButtonEnabled(true);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, //nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for accessibility
-				R.string.app_name // nav drawer close - description for accessibility
+				R.drawable.ic_drawer, // nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for
+									// accessibility
+				R.string.app_name // nav drawer close - description for
+									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
-				// calling onPrepareOptionsMenu() to show action bar icons
+				// calling onPrepareOptionsMenu() to show action bar icons/
 				invalidateOptionsMenu();
 			}
 
@@ -98,7 +102,7 @@ public class MainActivity extends Activity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		if (savedInstanceState == null) {
-			// on first time display view for first nav item
+			// on first time display view for first nav item test
 			displayView(0);
 		}
 	}
@@ -113,6 +117,7 @@ public class MainActivity extends Activity {
 				long id) {
 			// display view for selected nav drawer item
 			displayView(position);
+			mDrawerList.setItemChecked(position, true);
 		}
 	}
 
@@ -210,6 +215,12 @@ public class MainActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

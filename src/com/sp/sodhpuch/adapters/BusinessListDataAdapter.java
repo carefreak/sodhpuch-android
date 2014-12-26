@@ -144,7 +144,13 @@ public class BusinessListDataAdapter extends BaseAdapter implements
 			this.activity.startActivity(profile);
 		break;
 		default:
-		Log.d("","ss");
+			Intent d = new Intent(activity,
+					BusinessProfileActivity.class);
+			d.putExtra("deals_in", deals_in);
+			d.putExtra("phone", holder.business.getPhone());
+			d.putExtra("address", holder.business.getAddress());
+			d.putExtra("name", holder.business.getName());
+			this.activity.startActivity(d);
 		}
 	}
 

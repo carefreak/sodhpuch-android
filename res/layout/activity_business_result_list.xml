@@ -12,6 +12,7 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:listSelector="@drawable/list_drawer_selector"
         android:smoothScrollbar="false" >
     </ListView>
     

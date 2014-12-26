@@ -12,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 	
 	private Context context;
-	private ArrayList<com.sp.sodhpuch.data.NavDrawerItem> navDrawerItems;
+	private ArrayList<NavDrawerItem> navDrawerItems;
 	
 	public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
 		this.context = context;
@@ -46,14 +47,13 @@ public class NavDrawerListAdapter extends BaseAdapter {
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.list_item_drawer, null);
         }
-         
+		
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
         TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
          
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());        
         txtTitle.setText(navDrawerItems.get(position).getTitle());
-        
         // displaying count
         // check whether it set visible or not
         if(navDrawerItems.get(position).getCounterVisibility()){
@@ -61,6 +61,12 @@ public class NavDrawerListAdapter extends BaseAdapter {
         }else{
         	// hide the counter view
         	txtCount.setVisibility(View.GONE);
+        }
+        if (((ListView)parent).isItemChecked(position)) {
+            txtTitle.setTextColor(context.getResources().getColor(R.color.black));
+        } else {
+            txtTitle.setTextColor(context.getResources().getColor(R.color.list_background_pressed));
+            
         }
         
         return convertView;
